@@ -1,0 +1,61 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKER_IMAGE_NAME: ${{ env.DOCKER_IMAGE_NAME }}
+      AWS_REGISTRY: ${{ env.AWS_REGISTRY }}
+      AWS_REGION: ${{ env.AWS_REGION }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        run: |
+          docker build -t $DOCKER_IMAGE_NAME .
+
+          docker tag $DOCKER_IMAGE_NAME:latest $AWS_REGISTRY/$DOCKER_IMAGE_NAME:latest
+
+      - name: Push Docker Image
+        run: |
+          echo ${{ secrets.AWS_SECRET_ACCESS_KEY }} | docker login -u AWS --password-stdin $AWS_REGISTRY
+          docker push $AWS_REGISTRY/$DOCKER_IMAGE_NAME:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    env:
+      AWS_REGION: ${{ needs.build.outputs.AWS_REGION }}
+      AWS_REGISTRY: ${{ needs.build.outputs.AWS_REGISTRY }}
+
+    steps:
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: $AWS_REGION
+
+      - name: Deploy to AWS
+        run: |
+          # Add your AWS deployment commands here, such as ECS or EKS deployment steps
+          # Example for ECS:
+          # aws ecs update-service --cluster your-ecs-cluster --service your-ecs-service --force-new-deployment
+
+# Outputs to be used in the deploy job
+outputs:
+  AWS_REGION: ${{ env.AWS_REGION }}
+  AWS_REGISTRY: ${{ env.AWS_REGISTRY }}
