@@ -8,6 +8,8 @@ WORKDIR /app
 # Copy the application source code into the container
 COPY . .
 
+EXPOSE 8080
+
 # Build the Go application
 RUN go build -o main .
 
