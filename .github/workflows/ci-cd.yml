@@ -5,16 +5,14 @@ on:
     branches:
       - main
 
-
 env:
   AWS_REGION: us-east-1                                               # set this to your preferred AWS region, e.g. us-east-1
   ECR_REPOSITORY: ci-cd-test
-  ECS_SERVICE: ci-cd-test-svc                                              # set this to your Amazon ECS service name
+  ECS_SERVICE: ci-cd-test-svc                                         # set this to your Amazon ECS service name
   ECS_CLUSTER: ci-cd-test                                             # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: .github/workflows/task-definition.json         # set this to the path to your Amazon ECS task definition                                           # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: ci-cd-test                                          # set this to the name of the container in the
                                                
-
 
 jobs:
   build-push-deploy:
@@ -46,6 +44,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+          ## IMAGE_TAG: ${{ steps.increment-git-tag.outputs.git-tag }}
           IMAGE_TAG: latest
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .

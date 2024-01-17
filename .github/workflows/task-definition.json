@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:975050170485:task-definition/ci-cd-test-task:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:975050170485:task-definition/ci-cd-test-task:3",
     "containerDefinitions": [
         {
             "name": "ci-cd-test",
-            "image": "975050170485.dkr.ecr.us-east-1.amazonaws.com/ci-cd-test",
+            "image": "975050170485.dkr.ecr.us-east-1.amazonaws.com/ci-cd-test:latest",
             "cpu": 0,
             "portMappings": [
                 {
@@ -35,7 +35,7 @@
     "family": "ci-cd-test-task",
     "executionRoleArn": "arn:aws:iam::975050170485:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 3,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -78,7 +78,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-01-14T15:24:11.247Z",
+    "registeredAt": "2024-01-17T19:49:59.553Z",
     "registeredBy": "arn:aws:iam::975050170485:root",
     "tags": []
 }
