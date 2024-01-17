@@ -10,7 +10,7 @@ import (
 const port = 8080
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hello World!\n")
+	fmt.Fprint(w, "Hello AWS!\n")
 }
 
 type HealthResponse struct {
