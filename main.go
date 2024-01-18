@@ -15,7 +15,7 @@ type Response struct {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	var msg = "Hello ci-cd-test server"
+	var msg = "Hello aws-ci-cd-test server, you have finally made it"
 
 	response := Response{
 		Status:  "OK",
@@ -74,7 +74,7 @@ func main() {
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/health", healthHandler)
 
-	fmt.Printf("ci-cd-test server listening on port %d\n", port)
+	fmt.Printf("aws-ci-cd-test server listening on port %d\n", port)
 	err = http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
 	if err != nil {
 		log.Fatal("error:", err)
