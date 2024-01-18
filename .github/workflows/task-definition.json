@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:975050170485:task-definition/ci-cd-test-task:3",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:975050170485:task-definition/ci-cd-test-task:6",
     "containerDefinitions": [
         {
             "name": "ci-cd-test",
@@ -35,7 +35,7 @@
     "family": "ci-cd-test-task",
     "executionRoleArn": "arn:aws:iam::975050170485:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 3,
+    "revision": 6,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -78,7 +78,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-01-17T19:49:59.553Z",
+    "registeredAt": "2024-01-18T08:36:13.630Z",
     "registeredBy": "arn:aws:iam::975050170485:root",
     "tags": []
 }
