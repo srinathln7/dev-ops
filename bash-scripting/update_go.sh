@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Please note that this only for Linux-AMD64 OS Arch
 # Get the latest Go version
 go_latest_version=$(curl -s https://go.dev/VERSION?m=text | grep "go" | sed 's/go//')
 printf "Latest Go version: %s\n" "${go_latest_version}"
