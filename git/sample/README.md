@@ -1,5 +1,18 @@
 # Git Refresher
 
-EXERCISE 1: Clone and create new repository
-Clone git repository, creating a new local copy and
-Push it to your own Gitlab remote repository.
+## Add `.gitignore `
+
+```
+git rm --cached .DS_Store
+
+# -r for directories
+git rm -r --cached .idea
+git rm -r --cached out
+git rm -r --cached build
+
+# commit & push the changes
+git add .
+git commit -m "remove ignored files"
+git push
+
+```
