@@ -1,6 +1,7 @@
-#### This project is for the Devops bootcamp exercise for 
+
 #### "Build Tools and Package Managers"
 
+```
  2009  ls
  2010  gradele build
  2011  gradle build
@@ -16,5 +17,5 @@
  2021  gradle build
  2022  java -jar build/libs/build-tools-exercises-1.0-SNAPSHOT.jar srinath nandakumar
  2023  gradle clean
- 
+ ```
  
