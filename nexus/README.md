@@ -91,13 +91,8 @@ curl -u ${USER}:${PWD} -X GET 'http://157.230.121.207:8081/service/rest/v1/compo
 ## Publish Node.JS project
 
 ```
-2007  npm login  --registry=http://159.223.17.75:8081/repository/npm-sample/  <Enter admin credentials>
-2008  npm publish  --registry=http://159.223.17.75:8081/repository/npm-sample/ bootcamp-node-project-1.0.0.tgz
-
-
-
-curl -u {user}:{password} -X GET 'http://159.223.17.75:8081/service/rest/v1/components?repository={npm-sample}&sort=version'
-
+npm login  --registry=http://159.223.17.75:8081/repository/npm-sample/  <Enter admin credentials>
+npm publish  --registry=http://159.223.17.75:8081/repository/npm-sample/ bootcamp-node-project-1.0.0.tgz
 ```
 
 
@@ -120,3 +115,13 @@ vim ~/.m2/settings.xml
 
 ```
 
+## New user with access to both npm and maven repo
+
+```
+curl -u admin:admin -X GET 'http://159.223.17.75:8081/service/rest/v1/components?repository={npm-sample}&sort=version'
+
+curl -u admin:admin -X GET 'http://159.223.17.75:8081/service/rest/v1/components?repository={mvn}&sort=version'
+
+curl -u admin:admin -X GET 'http://159.223.17.75:8081/service/rest/v1/repositories'
+
+```
