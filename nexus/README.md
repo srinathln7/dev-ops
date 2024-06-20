@@ -73,3 +73,29 @@
 	</servers>
 </settings>
 ```
+
+## REST APIs
+
+```
+
+export USER=<user_name>
+export PWD=<pwd>
+
+curl -u ${USER}:${PWD} -X GET 'http://157.230.121.207:8081/service/rest/v1/repositories'
+
+curl -u ${USER}:${PWD} -X GET 'http://157.230.121.207:8081/service/rest/v1/components?repository=maven-snapshots'
+
+```
+
+
+## Publish Node.JS project
+
+```
+2007  npm login  --registry=http://159.223.17.75:8081/repository/npm-sample/  <Enter admin credentials>
+2008  npm publish  --registry=http://159.223.17.75:8081/repository/npm-sample/ bootcamp-node-project-1.0.0.tgz
+
+
+
+curl -u {user}:{password} -X GET 'http://159.223.17.75:8081/service/rest/v1/components?repository={npm-sample}&sort=version'
+
+```
