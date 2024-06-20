@@ -99,3 +99,24 @@ curl -u ${USER}:${PWD} -X GET 'http://157.230.121.207:8081/service/rest/v1/compo
 curl -u {user}:{password} -X GET 'http://159.223.17.75:8081/service/rest/v1/components?repository={npm-sample}&sort=version'
 
 ```
+
+
+## Publish a new project to maven central hosted repo
+
+```
+
+vim ~/.m2/settings.xml 
+
+<settings>
+	<servers>
+		<server>
+			<id>mvn</id>
+			<username>admin</username>
+			<password>admin</password>
+		</server>
+	</servers>
+</settings>
+
+
+```
+
